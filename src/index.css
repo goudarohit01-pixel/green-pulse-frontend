@@ -1,0 +1,162 @@
+:root {
+  --bg:           #050d0a;
+  --surface:      rgba(10, 25, 18, 0.9);
+  --border:       rgba(74, 222, 128, 0.1);
+  --border-hover: rgba(74, 222, 128, 0.3);
+  --green:        #22c55e;
+  --green-light:  #4ade80;
+  --green-dark:   #16a34a;
+  --cyan:         #22d3ee;
+  --purple:       #a78bfa;
+  --orange:       #fb923c;
+  --red:          #ef4444;
+  --text:         #d1fae5;
+  --text-muted:   #8ab89a;
+  --text-dim:     #3d6b52;
+  --font-display: 'Righteous', cursive;
+  --font-body:    'Plus Jakarta Sans', sans-serif;
+  --radius-sm:    8px;
+  --radius-md:    12px;
+  --radius-lg:    16px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #1a3a26; border-radius: 99px; }
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 40px #0a1912 inset !important;
+  -webkit-text-fill-color: #d1fae5 !important;
+}
+input::placeholder { color: #2a4a38; }
+select option      { background: #0a1912; color: #d1fae5; }
+
+a { color: var(--green-light); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.04); }
+}
+
+.page-enter { animation: fadeUp 0.4s ease both; }
+
+.hover-lift {
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #4ade80, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── MOBILE RESPONSIVE UTILITIES ─────────────────────────── */
+
+/* Make all grids stack on mobile */
+@media (max-width: 768px) {
+
+  /* KPI cards — 2 columns on mobile */
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* Charts — stack vertically */
+  .charts-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Info grid — single column */
+  .info-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Log activity grid — single column */
+  .log-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Goals grid — single column */
+  .goals-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Badges grid — 2 columns on mobile */
+  .badges-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Profile quick stats — wrap */
+  .profile-stats {
+    display: none !important;
+  }
+
+  /* History table — simplified on mobile */
+  .history-row {
+    grid-template-columns: 1fr 1fr 40px !important;
+  }
+
+  .history-row .hide-mobile {
+    display: none !important;
+  }
+
+  /* Scrollable tables */
+  .table-scroll {
+    overflow-x: auto;
+  }
+
+  /* Auth pages */
+  .auth-card {
+    padding: 24px 20px !important;
+  }
+
+  /* Comparison bars */
+  .compare-row {
+    flex-direction: column !important;
+  }
+}
+
+/* Very small screens (< 400px) */
+@media (max-width: 400px) {
+  .kpi-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .badges-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Touch friendly tap targets */
+@media (max-width: 768px) {
+  button {
+    min-height: 40px;
+  }
+  input, select, textarea {
+    font-size: 16px !important; /* Prevents iOS zoom */
+  }
+}
